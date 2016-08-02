@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import csv
 '''This data reads in the output from Aggregator.py, and produces a bar chart showing the frequency of all features.'''
-data = list(csv.reader(open('../BETADATA/Aggregation2.csv','r')))
+data = list(csv.reader(open('../Manga_Data_Analysis/FULLDATA/Aggregation.csv','r')))
 
 features = ['Regular Rotator', 'Kinematically Distinct Core' ,'Counter-Rotating Core', 'Kinematic Twist', 
             'Double Peak', 'Non-Rotating', 'Disturbed', 'Not Enough Data']
@@ -16,7 +16,7 @@ for row in data:
     if counter > 1: #This stops the code trying to read the header, and can be used to add other conditions (e.g. whether the maps are similar)
         datacount += 1
         stardata = row[3:11]
-        gasdata = row[13:21]
+        gasdata = row[14:22]
         for i in range(8):
             if int(stardata[i]) > 1:
                 stars[i] += 1
@@ -40,4 +40,4 @@ plt.yticks(ind + height/2, features, fontsize = 18)
 plt.xlabel('Probability', fontsize = 18)
 ax.set_title('Which of these features are present in the galaxy shown?', fontsize = 23)
 plt.xlim(0,1)
-plt.savefig('../Plots/ProperPlot.png', bbox_inches = 'tight')
+plt.savefig('../Manga_Data_Analysis/FULLDATA/Plots/ProperPlot.png', bbox_inches = 'tight')
