@@ -1,13 +1,15 @@
 import csv
 import os
-'''This code finds the maps of galaxies classified as having particular features and moves them to a different place'''
+import sys
+'''This code finds the maps of galaxies classified as having particular features and moves them to a different place
+Please specify the inputfile on the command line when running this code'''
 for f in ['../Sorted/RRs/Marvin.csv','../Sorted/KDCs/Marvin.csv','../Sorted/CRCs/Marvin.csv','../Sorted/KTs/Marvin.csv',
           '../Sorted/DPs/Marvin.csv','../Sorted/NRs/Marvin.csv','../Sorted/DSs/Marvin.csv','../Sorted/NoDataS.csv']:
     with open(f, 'w') as outputfile:
         outputfile.write('Marvin links\n')
 
 
-data = list(csv.reader(open('../BETADATA/Aggregation2.csv', 'r')))
+data = list(csv.reader(open(str(sys.argv[1]), 'r')))
 counter = 0
 for row in data:
     counter += 1

@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import csv
-'''This data reads in the output from Aggregator.py, and produces a bar chart showing the frequency of all features.'''
-data = list(csv.reader(open('../Manga_Data_Analysis/FULLDATA/Aggregation.csv','r')))
+import sys
+'''This data reads in the output from Aggregator.py, and produces a bar chart showing the frequency of all features.
+Please specify the inputfile and outputfile on the command line when running this code'''
+
+data = list(csv.reader(open(str(sys.argv[1]),'r')))
 
 features = ['Regular Rotator', 'Kinematically Distinct Core' ,'Counter-Rotating Core', 'Kinematic Twist', 
             'Double Peak', 'Non-Rotating', 'Disturbed', 'Not Enough Data']
@@ -40,4 +43,4 @@ plt.yticks(ind + height/2, features, fontsize = 18)
 plt.xlabel('Probability', fontsize = 18)
 ax.set_title('Which of these features are present in the galaxy shown?', fontsize = 23)
 plt.xlim(0,1)
-plt.savefig('../Manga_Data_Analysis/FULLDATA/Plots/ProperPlot.png', bbox_inches = 'tight')
+plt.savefig(str(sys.argv[2]), bbox_inches = 'tight')

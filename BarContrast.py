@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
 import csv
+import sys
 '''This data reads in the output from Aggregator.py, and produces a bar chart showing how frequently a feature appears in the gas map, given that it is present
-in the star map.'''
-data = list(csv.reader(open('../Manga_Data_Analysis/FULLDATA/Aggregation.csv','r')))
+in the star map.
+Please specify the inputfile and outputfile on the command line when running this code'''
+data = list(csv.reader(open(str(sys.argv[1]),'r')))
 
 features = ['Regular Rotator', 'Kinematically Distinct Core' ,'Counter-Rotating Core', 'Kinematic Twist', 
             'Double Peak', 'Non-Rotating', 'Disturbed', 'Not Enough Data']
@@ -49,5 +51,5 @@ for i in range(8):
 plt.xlabel('Probability', fontsize = 18)
 
 plt.tight_layout(h_pad=0.6)
-plt.savefig('../Manga_Data_Analysis/FULLDATA/Plots/StarContrastPlot.png', bbox_inches = 'tight')
+plt.savefig(str(sys.argv[2]), bbox_inches = 'tight')
 plt.show()

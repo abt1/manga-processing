@@ -1,12 +1,13 @@
 import csv
 import json
-
+import sys
 '''This code reads in the raw classification data downloaded from the
     Zooniverse and converts it to a human-friendly csv.
-It has not been written to include the new option for 'misaligned' galaxies.'''
+    Please specify the inputfile and outputfile on the command line when running this code
+    '''
 
-inputfile = list(csv.reader(open('../Manga_Data_Analysis/FULLDATA/RawClassifications.csv', 'r')))
-outputfile = open('../Manga_Data_Analysis/FULLDATA/Aggregation.csv', 'w')
+inputfile = list(csv.reader(open(str(sys.argv[1]), 'r')))
+outputfile = open(str(sys.argv[2]), 'w')
 
 outputfile.write("Subject ID, PLATE, IFUDSGN, Regular Rotation,Kinematically Distinct Core, Counter-Rotating Core,"
                  "Kinematic Twist,Double Peak, Non-Rotating, Disturbed, Not enough data present/ can't tell, Similar, Different,"
@@ -82,7 +83,7 @@ for row in inputfile:
         else:
             omnidict[ID] = data
 
-outputfile = open('../Manga_Data_Analysis/FULLDATA/Aggregation.csv', 'a')
+outputfile = open(str(sys.argv[2]), 'a')
 for i in omnidict:
     if omnidict[i]['Classifications'] > 2:
         line = ('{0},'.format(i))

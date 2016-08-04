@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
-import numpy as np
+import sys
 import csv
-'''This data reads in the output from Aggregator.py, and produces a bar chart showing the frequency of all features.'''
-data = list(csv.reader(open('../Manga_Data_Analysis/FULLDATA/Aggregation.csv','r')))
+'''This data reads in the output from Aggregator.py, and produces a bar chart showing the frequency of all features.
+    Please specify the inputfile and outputfile on the command line when running this code
+'''
+data = list(csv.reader(open(str(sys.argv[1]),'r')))
 
 datacount = 0
 results = [0,0,0]
@@ -22,4 +24,4 @@ plt.yticks((1,2,3), answers, fontsize = 18)
 plt.xlabel('Probability', fontsize = 18)
 ax.set_title('How do the galaxy maps compare?', fontsize = 23)
 plt.xlim(0,1)
-plt.savefig('../Manga_Data_Analysis/FULLDATA/Plots/YesNoPlot.png', bbox_inches = 'tight')
+plt.savefig(str(sys.argv[2]), bbox_inches = 'tight')
