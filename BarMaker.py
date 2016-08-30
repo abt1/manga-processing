@@ -40,7 +40,7 @@ plt.barh(ind, gas, align='center', color='#E62020', linewidth = 0.5, edgecolor =
 
 plt.legend(fontsize = 18)
 plt.yticks(ind + height/2, features, fontsize = 18)
-plt.xlabel('Probability', fontsize = 18)
+plt.xlabel('Frequency in the data set', fontsize = 18)
 ax.set_title('Which of these features are present in the galaxy shown?', fontsize = 23)
 plt.xlim(0,1)
 plt.savefig(str(sys.argv[2]), bbox_inches = 'tight')
