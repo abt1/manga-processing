@@ -48,7 +48,7 @@ for i in range(8):
     plt.title(features[i], fontsize = 18)
     plt.ylim(1,2.8)
     plt.xlim(0,1)
-plt.xlabel('Probability', fontsize = 18)
+plt.xlabel('Frequency in the data set', fontsize = 18)
 
 plt.tight_layout(h_pad=0.6)
 plt.savefig(str(sys.argv[2]), bbox_inches = 'tight')
